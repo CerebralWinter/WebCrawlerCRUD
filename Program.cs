@@ -19,8 +19,8 @@ namespace var.WebCrawler.CRUD
 
             try
             {
-                log.LogInformation("Program has started.");
-                log.LogError("Program has started.");
+                log.LogTrace("Program has started.");
+               
                 string url = "https://www.alimentinutrizione.it/tabelle-nutrizionali/ricerca-per-ordine-alfabetico";
                 var web = new HtmlWeb();
                 var htmlDoc = web.Load(url);
