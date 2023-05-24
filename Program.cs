@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using Var_WebCrawler_CRUD;
 using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace var.WebCrawler.CRUD
 {
@@ -21,6 +20,7 @@ namespace var.WebCrawler.CRUD
             try
             {
                 log.LogInformation("Program has started.");
+                log.LogError("Program has started.");
                 string url = "https://www.alimentinutrizione.it/tabelle-nutrizionali/ricerca-per-ordine-alfabetico";
                 var web = new HtmlWeb();
                 var htmlDoc = web.Load(url);
@@ -141,6 +141,7 @@ namespace var.WebCrawler.CRUD
                 }
                 var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
                 string jsonString = JsonSerializer.Serialize(listOfFoods, option);
+                log.LogWarning("this section need to be fixed");
                 string jsonOutpath = configuration["jsonFilePath"];
                 File.AppendAllText(jsonOutpath, jsonString);
                 log.LogInformation($"the information saved in a json file with the address");
