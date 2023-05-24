@@ -20,7 +20,7 @@ namespace var.WebCrawler.CRUD
             try
             {
                 log.LogTrace("Program has started.");
-               
+
                 string url = "https://www.alimentinutrizione.it/tabelle-nutrizionali/ricerca-per-ordine-alfabetico";
                 var web = new HtmlWeb();
                 var htmlDoc = web.Load(url);
@@ -39,7 +39,7 @@ namespace var.WebCrawler.CRUD
                 var stop = 30;
                 int count = 1;
                 log.LogInformation($"There are 900 foods and I want to get just {stop}");
-                foreach (FoodGeneralInfo food in listOfFoods)
+                Parallel.ForEach<FoodGeneralInfo>(listOfFoods, food =>
                 {
                     string foodUrl = food.Url;
                     var htmlFood = web.Load(foodUrl);
@@ -88,12 +88,12 @@ namespace var.WebCrawler.CRUD
                                 ValueFor100g = item.ChildNodes[2].InnerText.Replace("\u0026nbsp;", "").Trim(),
                                 Procedures = item.ChildNodes[7].InnerText.Trim(),
                                 DataSource = item.ChildNodes[6].InnerText.Trim(),
-                                Reference = item != null 
-                                && item.HasChildNodes 
-                                && item.ChildNodes[8] != null 
-                                && item.ChildNodes[8].HasChildNodes 
-                                && item.ChildNodes[8].ChildNodes[0].Attributes.Contains("data-content") 
-                                ? item.ChildNodes[8].ChildNodes[0].Attributes["data-content"].Value 
+                                Reference = item != null
+                                && item.HasChildNodes
+                                && item.ChildNodes[8] != null
+                                && item.ChildNodes[8].HasChildNodes
+                                && item.ChildNodes[8].ChildNodes[0].Attributes.Contains("data-content")
+                                ? item.ChildNodes[8].ChildNodes[0].Attributes["data-content"].Value
                                 : ""
                             });
                         }
@@ -138,7 +138,7 @@ namespace var.WebCrawler.CRUD
                     {
                         //break;
                     }
-                }
+                });
                 var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
                 string jsonString = JsonSerializer.Serialize(listOfFoods, option);
                 log.LogWarning("this section need to be fixed");
