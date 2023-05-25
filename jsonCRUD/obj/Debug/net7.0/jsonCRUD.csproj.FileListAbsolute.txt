@@ -88,3 +88,4 @@ C:\Users\arash\Desktop\WebCrawlerCRUD\jsonCRUD\obj\Debug\net7.0\refint\jsonCRUD.
 C:\Users\arash\Desktop\WebCrawlerCRUD\jsonCRUD\obj\Debug\net7.0\jsonCRUD.pdb
 C:\Users\arash\Desktop\WebCrawlerCRUD\jsonCRUD\obj\Debug\net7.0\jsonCRUD.genruntimeconfig.cache
 C:\Users\arash\Desktop\WebCrawlerCRUD\jsonCRUD\obj\Debug\net7.0\ref\jsonCRUD.dll
+C:\Users\arash\Desktop\WebCrawlerCRUD\jsonCRUD\bin\Debug\net7.0\PureJson\Dataset.json

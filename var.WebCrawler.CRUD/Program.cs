@@ -14,7 +14,7 @@ namespace var.WebCrawler.CRUD
         {
 
             var log = LoggerFactory.Create(builder => builder.AddNLog()).CreateLogger<Program>();
-            var builder = new ConfigurationBuilder().AddJsonFile("C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\var.WebCrawler.CRUD\\appsettings.json", optional: false, reloadOnChange: true);
+            var builder = new ConfigurationBuilder().AddJsonFile("C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\var.WebCrawler.CRUD\\appsettings.json", optional: false, reloadOnChange: true);
             IConfigurationRoot configuration = builder.Build();
 
             try

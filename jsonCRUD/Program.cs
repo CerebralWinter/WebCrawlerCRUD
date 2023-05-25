@@ -7,12 +7,19 @@ using System.Reflection;
 
 namespace var.WebCrawler.CRUD
 {
+
+    public class Global
+    {
+        public static string OriginaljsonFile;
+    }
     public class Program
     {
+
         static void Main(string[] args)
         {
             Console.WriteLine("\nWelcome to the Best Json browser in the world! :)))))))))))\n");
-            List<FoodGeneralInfo> listOfFood = GetJsonData(GetJsonPath());
+            Global.OriginaljsonFile = GetJsonPath();
+            List<FoodGeneralInfo> listOfFood = GetJsonData(Global.OriginaljsonFile);
             MainMenu(listOfFood);
         }
 
@@ -39,7 +46,7 @@ namespace var.WebCrawler.CRUD
 
             } while (Convert.ToInt32(operation) < 0 || Convert.ToInt32(operation) > 6 || operation != "6");
         }
-        #endregion 
+        #endregion
         #region SelectElement(List<FoodGeneralInfo> list) function ---> returns a List<FoodGeneralInfo>
         public static List<FoodGeneralInfo> SelectElement(List<FoodGeneralInfo> list)
         {
@@ -261,7 +268,7 @@ namespace var.WebCrawler.CRUD
 
             } while (op != "7" || (Convert.ToInt32(op) < 1 && Convert.ToInt32(op) > 8));
 
-            
+
 
         }
         #endregion
@@ -269,22 +276,22 @@ namespace var.WebCrawler.CRUD
         public static void MakeJsonFile(List<FoodGeneralInfo> list, string path)
         {
 
-            var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
-            string jsonString = System.Text.Json.JsonSerializer.Serialize(list, option);
-            File.WriteAllText(path, jsonString);
-            /*
-            List<FoodGeneralInfo> listOfFoodOrginal = GetJsonData(path);
+
+            
+            List<FoodGeneralInfo> listOfFoodOrginal = GetJsonData(Global.OriginaljsonFile);
             if (list.Count != listOfFoodOrginal.Count)
             {
-                Console.WriteLine($" this json file is defferent rispect To original file\n Do you want to the file? [y][n] ");
+                Console.WriteLine($"this json file result is defferent rispect To the original file\nDo you Confirm to save file? [y][n] ");
                 string op = Console.ReadLine();
                 if (op.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
                 {
-
+                    var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
+                    string jsonString = System.Text.Json.JsonSerializer.Serialize(list, option);
+                    File.WriteAllText(path, jsonString);
                 }
                 else { Console.WriteLine("No modification to the source json file\n Best wishes for you\n Hope to see you Again!"); }
             }
-            */
+            
         }
         #endregion
     }
