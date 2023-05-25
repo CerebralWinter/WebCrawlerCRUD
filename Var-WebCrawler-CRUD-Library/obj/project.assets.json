@@ -55,23 +55,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Corso7\\.nuget\\packages\\": {},
+    "C:\\Users\\arash\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\Var-WebCrawler-CRUD-Library\\Var-WebCrawler-CRUD.csproj",
+      "projectUniqueName": "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\Var-WebCrawler-CRUD-Library\\Var-WebCrawler-CRUD.csproj",
       "projectName": "Var-WebCrawler-CRUD",
-      "projectPath": "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\Var-WebCrawler-CRUD-Library\\Var-WebCrawler-CRUD.csproj",
-      "packagesPath": "C:\\Users\\Corso7\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\Var-WebCrawler-CRUD-Library\\obj\\",
+      "projectPath": "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\Var-WebCrawler-CRUD-Library\\Var-WebCrawler-CRUD.csproj",
+      "packagesPath": "C:\\Users\\arash\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\Var-WebCrawler-CRUD-Library\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Corso7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\arash\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -80,7 +80,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -120,7 +119,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

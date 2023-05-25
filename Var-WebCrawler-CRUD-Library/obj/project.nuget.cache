@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mOOOg7rYgQka9C42Amk0uI4AntPf39RZVsEcWmIJChu1h0l7OPVcA/JBNu6KsighOneeXSex++nLGUiIBOOG+g==",
+  "dgSpecHash": "JDQIKihNyD/2iIFDP7AuKEC5InFM3t9i73r7ZAm3t+VhIIkaSrwCmIgFQ9nNGVi9VpuHD67YdLgm5HmcXmcfCQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\Var-WebCrawler-CRUD-Library\\Var-WebCrawler-CRUD.csproj",
+  "projectFilePath": "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\Var-WebCrawler-CRUD-Library\\Var-WebCrawler-CRUD.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Corso7\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\arash\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

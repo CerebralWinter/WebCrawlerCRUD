@@ -21,7 +21,7 @@ namespace var.WebCrawler.CRUD
             MakeJsonFile(listOfFood, GetJsonPath());
         }
 
-        #region Main Menu 
+        #region MainMenu(List<FoodGeneralInfo> list) function void
         public static void MainMenu(List<FoodGeneralInfo> list)
         {
 
@@ -48,8 +48,8 @@ namespace var.WebCrawler.CRUD
 
             } while (Convert.ToInt32(operation) < 0 || Convert.ToInt32(operation) > 6 || operation != "6");
         }
-        #endregion
-        #region selection Method
+        #endregion 
+        #region SelectElement(List<FoodGeneralInfo> list) function ---> returns a List<FoodGeneralInfo>
         public static List<FoodGeneralInfo> SelectElement(List<FoodGeneralInfo> list)
         {
             Console.WriteLine("\nPlease select from the menu the Argument you want find :\n1-Italian Name\n2-English Name\n3-Scientific Name\n4-Category\n5-Food Code\n6-All above Arguments\n");
@@ -82,7 +82,7 @@ namespace var.WebCrawler.CRUD
             }
         }
         #endregion
-        #region AddMethod
+        #region AddElement(List<FoodGeneralInfo> list) function void
         public static void AddElement(List<FoodGeneralInfo> list)
         {
 
@@ -154,13 +154,13 @@ namespace var.WebCrawler.CRUD
 
         }
         #endregion
-        #region Update Method
+        #region UpdateElement(List<FoodGeneralInfo> list) function void
         public static void UpdateElement(List<FoodGeneralInfo> list)
         {
             List<FoodGeneralInfo> selectedItems = SelectElement(list);
         }
         #endregion
-        #region Download json file
+        #region MakeJsonFileList<FoodGeneralInfo> list, string path) function void
         public static void MakeJsonFile(List<FoodGeneralInfo> list, string path)
         {
             var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
@@ -168,22 +168,12 @@ namespace var.WebCrawler.CRUD
             File.WriteAllText(path, jsonString);
         }
         #endregion
-        #region Delete Method
+        #region eleteElements(List<FoodGeneralInfo> list) function
         public static void DeleteElements(List<FoodGeneralInfo> list)
         {
-            List<FoodGeneralInfo> desiredItems = SelectElement(list);
-            PrintData(desiredItems);
-            foreach (var item in list.ToList())
-                foreach (var item2 in desiredItems)
-                {
-                    if (item2.FoodCode.Equals(item.FoodCode))
-                    {
-                        int index = list.IndexOf(item);
-                        Console.WriteLine($"The item with food Code:  {item.FoodCode}  is deleted successfully");
-                        list.RemoveAt(index);
-                        break;
-                    }
-                }
+            List<FoodGeneralInfo> desiredItemsToDelete = SelectElement(list);
+            PrintData(desiredItemsToDelete);
+            list = list.Except(desiredItemsToDelete).ToList();
             Console.WriteLine("Do you want to turn back to the main menu? [Y][N] ");
             string op = Console.ReadLine();
             if (op.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
@@ -192,6 +182,7 @@ namespace var.WebCrawler.CRUD
             } 
         }
         #endregion
+        #region GetJsonPath function
         public static string GetJsonPath()
         {
             Console.WriteLine("Please Insert the path of the json file: ");
@@ -202,12 +193,16 @@ namespace var.WebCrawler.CRUD
             } while (string.IsNullOrEmpty(filePath));
             return filePath;
         }
+        #endregion
+        #region Get json Data
         public static List<FoodGeneralInfo> GetJsonData(string path)
         {
 
             string jsonString = File.ReadAllText(path);
             return JsonConvert.DeserializeObject<List<FoodGeneralInfo>>(jsonString);
         }
+        #endregion
+        #region printData function
         public static void PrintData(List<FoodGeneralInfo> list)
         {
             string op = string.Empty;
@@ -238,7 +233,7 @@ namespace var.WebCrawler.CRUD
                         case "6":
                             foreach (var ele in item.LangualCodes)
                             {
-                                Console.WriteLine($"\nLangual Id: {ele.Id} \n Langual Info: {ele.Info}");
+                                Console.WriteLine($"\n food Name: {item.ItalianName} \nLangual Id: {ele.Id} \n Langual Info: {ele.Info}");
                             }; break;
                         case "7": break;
                         default: Console.WriteLine("You did not choose [1-7]"); break;
@@ -250,5 +245,7 @@ namespace var.WebCrawler.CRUD
             Console.WriteLine("\nThe search result has " + list.Count + " Elements");
 
         }
+        #endregion
+
     }
 }

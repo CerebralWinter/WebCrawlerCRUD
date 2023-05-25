@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\jsonCRUD\\jsonCRUD.csproj": {}
+    "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\jsonCRUD\\jsonCRUD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\jsonCRUD\\jsonCRUD.csproj": {
+    "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\jsonCRUD\\jsonCRUD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\jsonCRUD\\jsonCRUD.csproj",
+        "projectUniqueName": "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\jsonCRUD\\jsonCRUD.csproj",
         "projectName": "jsonCRUD",
-        "projectPath": "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\jsonCRUD\\jsonCRUD.csproj",
-        "packagesPath": "C:\\Users\\Corso7\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\jsonCRUD\\obj\\",
+        "projectPath": "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\jsonCRUD\\jsonCRUD.csproj",
+        "packagesPath": "C:\\Users\\arash\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\jsonCRUD\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Corso7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arash\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\var.WebCrawler.CRUD\\var.WebCrawler.CRUD.csproj": {
-                "projectPath": "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\var.WebCrawler.CRUD\\var.WebCrawler.CRUD.csproj"
+              "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\var.WebCrawler.CRUD\\var.WebCrawler.CRUD.csproj": {
+                "projectPath": "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\var.WebCrawler.CRUD\\var.WebCrawler.CRUD.csproj"
               }
             }
           }
@@ -70,24 +69,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\var.WebCrawler.CRUD\\var.WebCrawler.CRUD.csproj": {
+    "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\var.WebCrawler.CRUD\\var.WebCrawler.CRUD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\var.WebCrawler.CRUD\\var.WebCrawler.CRUD.csproj",
+        "projectUniqueName": "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\var.WebCrawler.CRUD\\var.WebCrawler.CRUD.csproj",
         "projectName": "var.WebCrawler.CRUD",
-        "projectPath": "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\var.WebCrawler.CRUD\\var.WebCrawler.CRUD.csproj",
-        "packagesPath": "C:\\Users\\Corso7\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Corso7\\Desktop\\Var-WebCrawler-CRUD\\var.WebCrawler.CRUD\\obj\\",
+        "projectPath": "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\var.WebCrawler.CRUD\\var.WebCrawler.CRUD.csproj",
+        "packagesPath": "C:\\Users\\arash\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arash\\Desktop\\WebCrawlerCRUD\\var.WebCrawler.CRUD\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Corso7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arash\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -96,7 +95,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -164,7 +162,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
