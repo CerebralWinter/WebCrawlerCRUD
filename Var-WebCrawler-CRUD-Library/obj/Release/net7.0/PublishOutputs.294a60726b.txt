@@ -1,0 +1,3 @@
+C:\Users\Corso7\Desktop\Var-WebCrawler-CRUD\Var-WebCrawler-CRUD-Library\bin\Release\net7.0\publish\Var-WebCrawler-CRUD.dll
+C:\Users\Corso7\Desktop\Var-WebCrawler-CRUD\Var-WebCrawler-CRUD-Library\bin\Release\net7.0\publish\Var-WebCrawler-CRUD.deps.json
+C:\Users\Corso7\Desktop\Var-WebCrawler-CRUD\Var-WebCrawler-CRUD-Library\bin\Release\net7.0\publish\Var-WebCrawler-CRUD.pdb

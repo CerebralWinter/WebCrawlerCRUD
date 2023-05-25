@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Var-WebCrawler-CRUD/1.0.0": {
+        "runtime": {
+          "Var-WebCrawler-CRUD.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Var-WebCrawler-CRUD/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
