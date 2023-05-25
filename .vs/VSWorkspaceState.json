@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\jsonCRUD",
-    "\\Var-WebCrawler-CRUD-Library",
-    "\\var.WebCrawler.CRUD"
+    ""
   ],
-  "SelectedNode": "\\jsonCRUD\\Program.cs",
+  "SelectedNode": "\\var.WebCrawler.CRUD.sln",
   "PreviewInSolutionExplorer": false
 }

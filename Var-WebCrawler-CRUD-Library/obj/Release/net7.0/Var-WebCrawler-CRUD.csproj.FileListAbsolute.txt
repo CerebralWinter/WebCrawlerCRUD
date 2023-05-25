@@ -10,3 +10,15 @@ C:\Users\Corso7\Desktop\Var-WebCrawler-CRUD\Var-WebCrawler-CRUD-Library\obj\Rele
 C:\Users\Corso7\Desktop\Var-WebCrawler-CRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\refint\Var-WebCrawler-CRUD.dll
 C:\Users\Corso7\Desktop\Var-WebCrawler-CRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\Var-WebCrawler-CRUD.pdb
 C:\Users\Corso7\Desktop\Var-WebCrawler-CRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\ref\Var-WebCrawler-CRUD.dll
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\bin\Release\net7.0\Var-WebCrawler-CRUD.deps.json
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\bin\Release\net7.0\Var-WebCrawler-CRUD.dll
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\bin\Release\net7.0\Var-WebCrawler-CRUD.pdb
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\Var-WebCrawler-CRUD.csproj.AssemblyReference.cache
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\Var-WebCrawler-CRUD.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\Var-WebCrawler-CRUD.AssemblyInfoInputs.cache
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\Var-WebCrawler-CRUD.AssemblyInfo.cs
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\Var-WebCrawler-CRUD.csproj.CoreCompileInputs.cache
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\Var-WebCrawler-CRUD.dll
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\refint\Var-WebCrawler-CRUD.dll
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\Var-WebCrawler-CRUD.pdb
+C:\Users\arash\Desktop\WebCrawlerCRUD\Var-WebCrawler-CRUD-Library\obj\Release\net7.0\ref\Var-WebCrawler-CRUD.dll

@@ -9,8 +9,9 @@
       "jsonCRUD/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
+          "Var-WebCrawler-CRUD": "1.0.0",
           "var.WebCrawler.CRUD": "1.0.0",
-          "Var-WebCrawler-CRUD": "1.0.0.0"
+          "Var-WebCrawler-CRUD.Reference": "1.0.0.0"
         },
         "runtime": {
           "jsonCRUD.dll": {}
@@ -264,7 +265,7 @@
           "var.WebCrawler.CRUD.dll": {}
         }
       },
-      "Var-WebCrawler-CRUD/1.0.0.0": {
+      "Var-WebCrawler-CRUD.Reference/1.0.0.0": {
         "runtime": {
           "Var-WebCrawler-CRUD.dll": {
             "assemblyVersion": "1.0.0.0",
@@ -439,7 +440,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Var-WebCrawler-CRUD/1.0.0.0": {
+    "Var-WebCrawler-CRUD.Reference/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

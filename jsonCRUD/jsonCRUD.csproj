@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Var-WebCrawler-CRUD-Library\Var-WebCrawler-CRUD.csproj" />
     <ProjectReference Include="..\var.WebCrawler.CRUD\var.WebCrawler.CRUD.csproj" />
   </ItemGroup>
 
