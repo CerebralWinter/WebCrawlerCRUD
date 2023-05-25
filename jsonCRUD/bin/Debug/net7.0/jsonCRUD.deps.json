@@ -257,7 +257,8 @@
           "Microsoft.Extensions.Logging": "7.0.0",
           "Microsoft.Extensions.Logging.Configuration": "7.0.0",
           "NLog": "5.1.4",
-          "NLog.Extensions.Logging": "5.2.3"
+          "NLog.Extensions.Logging": "5.2.3",
+          "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "var.WebCrawler.CRUD.dll": {}

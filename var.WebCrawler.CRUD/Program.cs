@@ -141,10 +141,9 @@ namespace var.WebCrawler.CRUD
                 });
                 var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
                 string jsonString = JsonSerializer.Serialize(listOfFoods, option);
-                log.LogWarning("this section need to be fixed");
                 string jsonOutpath = configuration["jsonFilePath"];
                 File.AppendAllText(jsonOutpath, jsonString);
-                log.LogInformation($"the information saved in a json file with the address");
+                log.LogInformation($"\nthe information saved in a json file with the address {jsonOutpath}");
 
             }
             catch (Exception e)
