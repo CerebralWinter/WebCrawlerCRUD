@@ -3,22 +3,33 @@ using Var_WebCrawler_CRUD;
 using System.Text.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace var.WebCrawler.CRUD
 {
-
-    public class path
+    public class Path
     {
-        public string Path { get; set; }
+        public static string JsonPathOrginal = GetPath();
+        public static string NewJsonPath = GetPath();
+
+        public static string GetPath()
+        {
+            Console.WriteLine("Please Insert the path of the json file: ");
+            string filePath = string.Empty;
+            do
+            {
+                filePath = Console.ReadLine();
+            } while (string.IsNullOrEmpty(filePath));
+            return filePath;
+        }
     }
     public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("\nWelcome to the Best Json browser in the world! :)))))))))))\n");
-            List<FoodGeneralInfo> listOfFood = GetJsonData(GetJsonPath());
+            List<FoodGeneralInfo> listOfFood = GetJsonData(Path.JsonPathOrginal);
             MainMenu(listOfFood);
-            MakeJsonFile(listOfFood, GetJsonPath());
         }
 
         #region MainMenu(List<FoodGeneralInfo> list) function void
@@ -28,21 +39,17 @@ namespace var.WebCrawler.CRUD
             string operation = string.Empty;
             do
             {
-                Console.WriteLine("\nPlease Choose From the Menu Your Operation:\n\n\n 1-Select\n 2-Add\n 3-Delete\n 4-Update\n 5-DownLoad\n 6-Exit");
+                Console.WriteLine("\nPlease Choose From the Menu Your Operation:\n\n\n 1-Select\n 2-Add\n 3-Delete\n 4-Update\n 5-DownLoad\n 6-Exit\n");
                 operation = Console.ReadLine();
                 List<FoodGeneralInfo> SelectedItems = new List<FoodGeneralInfo>();
                 switch (operation)
                 {
-                    case "1":
-                        SelectedItems = SelectElement(list);
-                        PrintData(SelectedItems);
-                        Console.WriteLine("You Are transfering to the Main Menu");
-                        break;
+                    case "1": SelectElement(list); break;
                     case "2": AddElement(list); break;
                     case "3": DeleteElements(list); break;
                     case "4": UpdateElement(list); break;
-                    case "5": break;
-                    case "6": ; break;
+                    case "5": MakeJsonFile(list); break;
+                    case "6":; break;
                     default: Console.WriteLine("The operator should be between [1-6]"); break;
                 }
 
@@ -52,7 +59,7 @@ namespace var.WebCrawler.CRUD
         #region SelectElement(List<FoodGeneralInfo> list) function ---> returns a List<FoodGeneralInfo>
         public static List<FoodGeneralInfo> SelectElement(List<FoodGeneralInfo> list)
         {
-            Console.WriteLine("\nPlease select from the menu the Argument you want find :\n1-Italian Name\n2-English Name\n3-Scientific Name\n4-Category\n5-Food Code\n6-All above Arguments\n");
+            Console.WriteLine("\nPlease select from the menu the Argument you want find :\n 1-Italian Name\n 2-English Name\n 3-Scientific Name\n 4-Category\n 5-Food Code\n 6-All above Arguments\n");
             string command = string.Empty;
             do
             {
@@ -62,24 +69,44 @@ namespace var.WebCrawler.CRUD
             } while (Convert.ToInt32(command) < 0 || Convert.ToInt32(command) > 6);
             Console.WriteLine("Please Insert The searchKey: ");
             string searchKey = Console.ReadLine();
-
+            List<FoodGeneralInfo> SelectedItems = new List<FoodGeneralInfo>();
             switch (command)
             {
-                case "1": return list.Where(x => x.ItalianName.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)).ToList();
-                case "2": return list.Where(x => x.EnglishName.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)).ToList();
-                case "3": return list.Where(x => x.ScientificName.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)).ToList();
-                case "4": return list.Where(x => x.Category.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)).ToList();
-                case "5": return list.Where(x => x.FoodCode == searchKey).ToList();
+                case "1": SelectedItems = list.Where(x => x.ItalianName.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)).ToList(); break;
+                case "2": SelectedItems = list.Where(x => x.EnglishName.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)).ToList(); break;
+                case "3": SelectedItems = list.Where(x => x.ScientificName.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)).ToList(); break;
+                case "4": SelectedItems = list.Where(x => x.Category.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)).ToList(); break;
+                case "5": SelectedItems = list.Where(x => x.FoodCode == searchKey).ToList(); break;
                 case "6":
-                    return list.Where(x => x.ItalianName.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)
+                    SelectedItems = list.Where(x => x.ItalianName.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)
                 || x.ItalianName.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)
                 || (!string.IsNullOrEmpty(x.ScientificName) && x.ScientificName.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase))
                 || x.Category.Contains(searchKey, StringComparison.CurrentCultureIgnoreCase)
-                || x.FoodCode == searchKey).ToList();
+                || x.FoodCode == searchKey).ToList(); break;
                 default:
                     Console.WriteLine("Please insert a number between 1 - 6 ");
-                    return new List<FoodGeneralInfo>();
+                    SelectedItems = new List<FoodGeneralInfo>(); break;
+
+
             }
+
+            PrintData(SelectedItems);
+            Console.WriteLine("Do You like to Download the result of select search:  [y][n]?");
+            if (Console.ReadLine().Equals("y", StringComparison.CurrentCultureIgnoreCase))
+            {
+                Console.WriteLine("Please Insert the path of the json file you want to save (just the path!!): ");
+                string filePath = Path.NewJsonPath;
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                Console.WriteLine("Please Insert the name of the file without .json: ");
+                string path = $"{filePath}\\{Console.ReadLine()}.json";
+                MakeJsonFile(SelectedItems);
+                Console.WriteLine($"\nThe file Created successfully in the address : {path}");
+            }
+            Console.WriteLine("\nYou Are transfering to the Main Menu ...");
+            return SelectedItems;
         }
         #endregion
         #region AddElement(List<FoodGeneralInfo> list) function void
@@ -160,15 +187,7 @@ namespace var.WebCrawler.CRUD
             List<FoodGeneralInfo> selectedItems = SelectElement(list);
         }
         #endregion
-        #region MakeJsonFileList<FoodGeneralInfo> list, string path) function void
-        public static void MakeJsonFile(List<FoodGeneralInfo> list, string path)
-        {
-            var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
-            string jsonString = System.Text.Json.JsonSerializer.Serialize(list, option);
-            File.WriteAllText(path, jsonString);
-        }
-        #endregion
-        #region eleteElements(List<FoodGeneralInfo> list) function
+        #region DeleteElements(List<FoodGeneralInfo> list) function
         public static void DeleteElements(List<FoodGeneralInfo> list)
         {
             List<FoodGeneralInfo> desiredItemsToDelete = SelectElement(list);
@@ -179,10 +198,10 @@ namespace var.WebCrawler.CRUD
             if (op.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
             {
                 MainMenu(list);
-            } 
+            }
         }
         #endregion
-        #region GetJsonPath function
+        #region string GetJsonPath() function ---> returns a string
         public static string GetJsonPath()
         {
             Console.WriteLine("Please Insert the path of the json file: ");
@@ -194,17 +213,29 @@ namespace var.WebCrawler.CRUD
             return filePath;
         }
         #endregion
-        #region Get json Data
+        #region GetJsonData(string path)  ---> returns a List<FoodGeneralInfo>
         public static List<FoodGeneralInfo> GetJsonData(string path)
         {
 
             string jsonString = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<List<FoodGeneralInfo>>(jsonString);
+            if (!string.IsNullOrEmpty(jsonString))
+            {
+                return JsonConvert.DeserializeObject<List<FoodGeneralInfo>>(jsonString);
+            }
+            else
+            {
+                Console.WriteLine("The file does not loaded correctly");
+                return new List<FoodGeneralInfo>();
+            }
+
         }
         #endregion
-        #region printData function
+        #region PrintData(List<FoodGeneralInfo> list) function void
         public static void PrintData(List<FoodGeneralInfo> list)
         {
+
+            Console.WriteLine("\nThe search result has " + list.Count + " Elements\n");
+
             string op = string.Empty;
             do
             {
@@ -242,10 +273,28 @@ namespace var.WebCrawler.CRUD
 
             } while (op != "7" || (Convert.ToInt32(op) < 1 && Convert.ToInt32(op) > 8));
 
-            Console.WriteLine("\nThe search result has " + list.Count + " Elements");
+            
 
         }
         #endregion
+        #region MakeJsonFileList<FoodGeneralInfo> list, string path) function void
+        public static void MakeJsonFile(List<FoodGeneralInfo> list)
+        {
 
+            List<FoodGeneralInfo> listOfFoodOrginal = GetJsonData(Path.JsonPathOrginal);
+            if (list.Count != listOfFoodOrginal.Count)
+            {
+                Console.WriteLine($" this json file is defferent rispect To original file\n Do you want to the file? [y][n] ");
+                string op = Console.ReadLine();
+                if (op.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
+                    string jsonString = System.Text.Json.JsonSerializer.Serialize(list, option);
+                    File.WriteAllText(Path.NewJsonPath,jsonString);
+                }
+                else { Console.WriteLine("No modification to the source json file\n Best wishes for you\n Hope to see you Again!"); }
+            }
+        }
+        #endregion
     }
 }
