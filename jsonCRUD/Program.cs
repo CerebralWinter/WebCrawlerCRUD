@@ -6,25 +6,53 @@ using System.IO;
 
 namespace var.WebCrawler.CRUD
 {
-    internal class Program
+
+    public class path
+    {
+        public string Path { get; set; }
+    }
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("\nWelcome to the Best Json browser in the world! :)))))))))))\n");
-            Console.WriteLine("Please Insert the path of the json file: "); 
-            string filePath = string.Empty;
+            List<FoodGeneralInfo> listOfFood = GetJsonData(GetJsonPath());
+            MainMenu(listOfFood);
+            MakeJsonFile(listOfFood, GetJsonPath());
+        }
+
+        #region Main Menu 
+        public static void MainMenu(List<FoodGeneralInfo> list)
+        {
+
+            string operation = string.Empty;
             do
             {
-                filePath = Console.ReadLine();
-            } while (string.IsNullOrEmpty(filePath));
-            List<FoodGeneralInfo> listOfFood = GetJson(filePath);
-            MainMenu(listOfFood, filePath);
-            MakeJsonFile(listOfFood, filePath);
+                Console.WriteLine("\nPlease Choose From the Menu Your Operation:\n\n\n 1-Select\n 2-Add\n 3-Delete\n 4-Update\n 5-DownLoad\n 6-Exit");
+                operation = Console.ReadLine();
+                List<FoodGeneralInfo> SelectedItems = new List<FoodGeneralInfo>();
+                switch (operation)
+                {
+                    case "1":
+                        SelectedItems = SelectElement(list);
+                        PrintData(SelectedItems);
+                        Console.WriteLine("You Are transfering to the Main Menu");
+                        break;
+                    case "2": AddElement(list); break;
+                    case "3": DeleteElements(list); break;
+                    case "4": UpdateElement(list); break;
+                    case "5": break;
+                    case "6": ; break;
+                    default: Console.WriteLine("The operator should be between [1-6]"); break;
+                }
+
+            } while (Convert.ToInt32(operation) < 0 || Convert.ToInt32(operation) > 6 || operation != "6");
         }
+        #endregion
         #region selection Method
         public static List<FoodGeneralInfo> SelectElement(List<FoodGeneralInfo> list)
         {
-            Console.WriteLine("\nPlease select from the menu the Argument you want find a specific food:\n1-Italian Name\n2-English Name\n3-Scientific Name\n4-Category\n5-Food Code\n6-All above Arguments\n");
+            Console.WriteLine("\nPlease select from the menu the Argument you want find :\n1-Italian Name\n2-English Name\n3-Scientific Name\n4-Category\n5-Food Code\n6-All above Arguments\n");
             string command = string.Empty;
             do
             {
@@ -54,59 +82,8 @@ namespace var.WebCrawler.CRUD
             }
         }
         #endregion
-        // Welcome Menu and return the path of the json file
-        // retrun 
-        public static List<FoodGeneralInfo> GetJson(string path)
-        {
-
-            string jsonString = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<List<FoodGeneralInfo>>(jsonString);
-        }
-        //print the information of an element of the list
-        public static void PrintData(List<FoodGeneralInfo> list)
-        {
-            string op = string.Empty;
-            do
-            {
-                Console.WriteLine($"\n\n 1- Print names of the food\n 2- Print Site Url of the food\n 3- Print Category of the food\n" +
-                     $" 4- print information of the food\n 5- Print Nutritions of the food\n 6- Print Langual code of the food\n 7-Exit");
-                op = Console.ReadLine();
-                foreach (var item in list)
-                {
-                    switch (op)
-                    {
-                        case "1":
-                            Console.WriteLine($"The Italian and English name and SCIENTIFIC name of the food are: {item.ItalianName} , {item.EnglishName} , {item.ScientificName}"); break;
-                        case "2":
-                            Console.WriteLine($"The site URL of the food is : {item.Url}"); break;
-                        case "3":
-                            Console.WriteLine($"The main Category of the food is : {item.Category}"); break;
-                        case "4":
-                            Console.WriteLine($"The Food information: {item.Information}"); break;
-                        case "5":
-                            foreach (var ele in item.Nutritions)
-                            {
-                                Console.WriteLine($" food Name: {item.ItalianName} ==>  \n Category: {ele.Category} \n Description: {ele.Description}" +
-                                    $" \n ValueFor100g: {ele.ValueFor100g} \n Procedures: {ele.Procedures} \n DataSource: {ele.DataSource} \n Reference:  {ele.Reference}");
-                                Console.WriteLine("----------------------------------------------------------------------------------------------------------");
-                            }; break;
-                        case "6":
-                            foreach (var ele in item.LangualCodes)
-                            {
-                                Console.WriteLine($"\nLangual Id: {ele.Id} \n Langual Info: {ele.Info}");
-                            }; break;
-                        case "7": break;
-                        default: Console.WriteLine("You did not choose [1-7]"); break;
-                    }
-                }
-
-            } while (op != "7" || (Convert.ToInt32(op) < 1 && Convert.ToInt32(op) > 8));
-
-            Console.WriteLine("\nThe search result has " + list.Count + " Elements");
-
-        }
         #region AddMethod
-        public static void AddElement(List<FoodGeneralInfo> list, string path)
+        public static void AddElement(List<FoodGeneralInfo> list)
         {
 
             Console.WriteLine("\nWelcome to the addition Section : \n");
@@ -171,47 +148,107 @@ namespace var.WebCrawler.CRUD
             switch (operation)
             {
                 case "1": PrintData(AddedItem); break;
-                case "2": MainMenu(list, path); break;
+                case "2": MainMenu(list); break;
                 case "3": break;
             }
 
         }
         #endregion
+        #region Update Method
+        public static void UpdateElement(List<FoodGeneralInfo> list)
+        {
+            List<FoodGeneralInfo> selectedItems = SelectElement(list);
+        }
+        #endregion
+        #region Download json file
         public static void MakeJsonFile(List<FoodGeneralInfo> list, string path)
         {
             var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
             string jsonString = System.Text.Json.JsonSerializer.Serialize(list, option);
             File.WriteAllText(path, jsonString);
         }
-
-        public static void MainMenu(List<FoodGeneralInfo> list, string jsonpathFile)
+        #endregion
+        #region Delete Method
+        public static void DeleteElements(List<FoodGeneralInfo> list)
         {
-            
-            string operation = string.Empty;
+            List<FoodGeneralInfo> desiredItems = SelectElement(list);
+            PrintData(desiredItems);
+            foreach (var item in list.ToList())
+                foreach (var item2 in desiredItems)
+                {
+                    if (item2.FoodCode.Equals(item.FoodCode))
+                    {
+                        int index = list.IndexOf(item);
+                        Console.WriteLine($"The item with food Code:  {item.FoodCode}  is deleted successfully");
+                        list.RemoveAt(index);
+                        break;
+                    }
+                }
+            Console.WriteLine("Do you want to turn back to the main menu? [Y][N] ");
+            string op = Console.ReadLine();
+            if (op.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
+            {
+                MainMenu(list);
+            } 
+        }
+        #endregion
+        public static string GetJsonPath()
+        {
+            Console.WriteLine("Please Insert the path of the json file: ");
+            string filePath = string.Empty;
             do
             {
-                Console.WriteLine("\nPlease Choose From the Menu Your Operation:\n\n\n 1-Select\n 2-Add\n 3-Delete\n 4-Update\n 5-DownLoad\n 6-Exit");
-                operation = Console.ReadLine();
-                List<FoodGeneralInfo> SelectedItems = new List<FoodGeneralInfo>();
-                switch (operation)
+                filePath = Console.ReadLine();
+            } while (string.IsNullOrEmpty(filePath));
+            return filePath;
+        }
+        public static List<FoodGeneralInfo> GetJsonData(string path)
+        {
+
+            string jsonString = File.ReadAllText(path);
+            return JsonConvert.DeserializeObject<List<FoodGeneralInfo>>(jsonString);
+        }
+        public static void PrintData(List<FoodGeneralInfo> list)
+        {
+            string op = string.Empty;
+            do
+            {
+                Console.WriteLine($"\n\n 1- Print names of the food\n 2- Print Site Url of the food\n 3- Print Category of the food\n" +
+                     $" 4- print information of the food\n 5- Print Nutritions of the food\n 6- Print Langual code of the food\n 7-Exit");
+                op = Console.ReadLine();
+                foreach (var item in list)
                 {
-                    case "1": SelectedItems = SelectElement(list);
-                        PrintSelectedItems(SelectedItems);
-                        break;
-                    case "2": AddElement(list, jsonpathFile); break;
-                    case "3": break;
-                    case "4": break;
-                    case "5": break;
-                    case "6": break;
-                    default: Console.WriteLine("The operator should be between [1-6]"); break;
+                    switch (op)
+                    {
+                        case "1":
+                            Console.WriteLine($"The Italian and English name and SCIENTIFIC name of the food are: {item.ItalianName} , {item.EnglishName} , {item.ScientificName}"); break;
+                        case "2":
+                            Console.WriteLine($"The site URL of the food is : {item.Url}"); break;
+                        case "3":
+                            Console.WriteLine($"The main Category of the food is : {item.Category}"); break;
+                        case "4":
+                            Console.WriteLine($"The Food information: {item.Information}"); break;
+                        case "5":
+                            foreach (var ele in item.Nutritions)
+                            {
+                                Console.WriteLine($" food Name: {item.ItalianName} ==>  \n Category: {ele.Category} \n Description: {ele.Description}" +
+                                    $" \n ValueFor100g: {ele.ValueFor100g} \n Procedures: {ele.Procedures} \n DataSource: {ele.DataSource} \n Reference:  {ele.Reference}");
+                                Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+                            }; break;
+                        case "6":
+                            foreach (var ele in item.LangualCodes)
+                            {
+                                Console.WriteLine($"\nLangual Id: {ele.Id} \n Langual Info: {ele.Info}");
+                            }; break;
+                        case "7": break;
+                        default: Console.WriteLine("You did not choose [1-7]"); break;
+                    }
                 }
 
-            } while (Convert.ToInt32(operation) < 0 || Convert.ToInt32(operation) > 6 || operation != "6");
-        }
+            } while (op != "7" || (Convert.ToInt32(op) < 1 && Convert.ToInt32(op) > 8));
 
-        public static void PrintSelectedItems(List<FoodGeneralInfo> list)
-        {
-            PrintData(list);
+            Console.WriteLine("\nThe search result has " + list.Count + " Elements");
+
         }
     }
 }
