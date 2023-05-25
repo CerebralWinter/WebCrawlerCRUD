@@ -7,28 +7,12 @@ using System.Reflection;
 
 namespace var.WebCrawler.CRUD
 {
-    public class Path
-    {
-        public static string JsonPathOrginal = GetPath();
-        public static string NewJsonPath = GetPath();
-
-        public static string GetPath()
-        {
-            Console.WriteLine("Please Insert the path of the json file: ");
-            string filePath = string.Empty;
-            do
-            {
-                filePath = Console.ReadLine();
-            } while (string.IsNullOrEmpty(filePath));
-            return filePath;
-        }
-    }
     public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("\nWelcome to the Best Json browser in the world! :)))))))))))\n");
-            List<FoodGeneralInfo> listOfFood = GetJsonData(Path.JsonPathOrginal);
+            List<FoodGeneralInfo> listOfFood = GetJsonData(GetJsonPath());
             MainMenu(listOfFood);
         }
 
@@ -48,7 +32,7 @@ namespace var.WebCrawler.CRUD
                     case "2": AddElement(list); break;
                     case "3": DeleteElements(list); break;
                     case "4": UpdateElement(list); break;
-                    case "5": MakeJsonFile(list); break;
+                    case "5": MakeJsonFile(list, GetJsonPath()); break;
                     case "6":; break;
                     default: Console.WriteLine("The operator should be between [1-6]"); break;
                 }
@@ -95,14 +79,18 @@ namespace var.WebCrawler.CRUD
             if (Console.ReadLine().Equals("y", StringComparison.CurrentCultureIgnoreCase))
             {
                 Console.WriteLine("Please Insert the path of the json file you want to save (just the path!!): ");
-                string filePath = Path.NewJsonPath;
+                string filePath = string.Empty;
+                do
+                {
+                    filePath = Console.ReadLine();
+                } while (string.IsNullOrEmpty(filePath));
                 if (!Directory.Exists(filePath))
                 {
                     Directory.CreateDirectory(filePath);
                 }
                 Console.WriteLine("Please Insert the name of the file without .json: ");
                 string path = $"{filePath}\\{Console.ReadLine()}.json";
-                MakeJsonFile(SelectedItems);
+                MakeJsonFile(SelectedItems, path);
                 Console.WriteLine($"\nThe file Created successfully in the address : {path}");
             }
             Console.WriteLine("\nYou Are transfering to the Main Menu ...");
@@ -278,10 +266,10 @@ namespace var.WebCrawler.CRUD
         }
         #endregion
         #region MakeJsonFileList<FoodGeneralInfo> list, string path) function void
-        public static void MakeJsonFile(List<FoodGeneralInfo> list)
+        public static void MakeJsonFile(List<FoodGeneralInfo> list, string path)
         {
 
-            List<FoodGeneralInfo> listOfFoodOrginal = GetJsonData(Path.JsonPathOrginal);
+            List<FoodGeneralInfo> listOfFoodOrginal = GetJsonData(path);
             if (list.Count != listOfFoodOrginal.Count)
             {
                 Console.WriteLine($" this json file is defferent rispect To original file\n Do you want to the file? [y][n] ");
@@ -290,7 +278,7 @@ namespace var.WebCrawler.CRUD
                 {
                     var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
                     string jsonString = System.Text.Json.JsonSerializer.Serialize(list, option);
-                    File.WriteAllText(Path.NewJsonPath,jsonString);
+                    File.WriteAllText(path, jsonString);
                 }
                 else { Console.WriteLine("No modification to the source json file\n Best wishes for you\n Hope to see you Again!"); }
             }
