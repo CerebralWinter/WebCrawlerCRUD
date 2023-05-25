@@ -269,6 +269,10 @@ namespace var.WebCrawler.CRUD
         public static void MakeJsonFile(List<FoodGeneralInfo> list, string path)
         {
 
+            var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
+            string jsonString = System.Text.Json.JsonSerializer.Serialize(list, option);
+            File.WriteAllText(path, jsonString);
+            /*
             List<FoodGeneralInfo> listOfFoodOrginal = GetJsonData(path);
             if (list.Count != listOfFoodOrginal.Count)
             {
@@ -276,12 +280,11 @@ namespace var.WebCrawler.CRUD
                 string op = Console.ReadLine();
                 if (op.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
                 {
-                    var option = new JsonSerializerOptions { WriteIndented = true, AllowTrailingCommas = true };
-                    string jsonString = System.Text.Json.JsonSerializer.Serialize(list, option);
-                    File.WriteAllText(path, jsonString);
+
                 }
                 else { Console.WriteLine("No modification to the source json file\n Best wishes for you\n Hope to see you Again!"); }
             }
+            */
         }
         #endregion
     }
